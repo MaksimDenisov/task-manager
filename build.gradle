@@ -19,6 +19,11 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'checkstyle'
 
+    plugins.withId('org.springframework.boot') {
+        jar {
+            enabled = false
+        }
+    }
 
     java {
         toolchain {

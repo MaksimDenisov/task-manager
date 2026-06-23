@@ -1,0 +1,29 @@
+services:
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - "8084:8080"
+
+  task-manager:
+    ports:
+      - "8081:8080"
+
+  scheduler:
+    ports:
+      - "8082:8080"
+
+  mail-sender:
+    ports:
+      - "8083:8080"
+
+  web:
+    ports:
+      - "8080:80"
+
+  db:
+    ports:
+      - "5432:5432"
+
+  kafka:
+    ports:
+      - "9092:9092"
