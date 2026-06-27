@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20260627-create-users-table
+      author: max
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_pk
+                    nullable: false
+
+              - column:
+                  name: email
+                  type: varchar(254)
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: user_email_uq
+                    nullable: false
+
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: created
+                  type: timestamp
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false

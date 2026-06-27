@@ -1,2 +1,12 @@
 server:
   port: 8080
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://db:5432/tm_db
+    username: user
+    password: password
+  jpa:
+    open-in-view: false
+  liquibase:
+    change-log: classpath:liquibase/changelog.yml
