@@ -5,18 +5,18 @@ checkstyle:
 report:
 	./gradlew jacocoTestReport
 
-run-docker-task-manager:
-	docker run -it task-manager
-run-docker-scheduler:
-	docker run -it scheduler
-run-docker-mail-sender:
-	docker run -it mail-sender
-
-up:
-	docker compose -f compose.yml -f compose.env.yml up
+run-task-manager:
+	docker compose -f compose.yml -f compose.dev.yml up task-manager
+run-scheduler:
+	docker compose -f compose.yml -f compose.dev.yml up scheduler
+run-mail-sender:
+	dockerdocker compose -f compose.yml -f compose.dev.yml up mail-sender
 
 run-dev:
-	docker compose -f compose.yml -f compose.env.yml -f compose.dev.yml up
+	docker compose -f compose.yml -f compose.dev.yml up
+stop-dev:
+	docker compose -f compose.yml -f compose.dev.yml down
 
 run-prod:
-	docker compose -f compose.yml -f compose.env.yml -f compose.prod.yml up
+	docker compose -f compose.yml -f compose.prod.yml up
+
