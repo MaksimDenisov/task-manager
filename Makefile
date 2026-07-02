@@ -6,7 +6,7 @@ report:
 	./gradlew jacocoTestReport
 
 run-task-manager:
-	docker compose -f compose.yml -f compose.dev.yml up task-manager
+	docker compose -f compose.yml -f compose.dev.yml up task-manager --build
 run-scheduler:
 	docker compose -f compose.yml -f compose.dev.yml up scheduler
 run-mail-sender:

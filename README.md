@@ -29,6 +29,8 @@ make run-mail-sender
 | Scheduler API | http://localhost:8082 |
 | Mail Sender API | http://localhost:8083 |
 | Kafka UI | http://localhost:8084 |
+|Swagger |http://localhost:8081/swagger-ui/index.html|
+
 
 ## Development Ports
 | Service      | Host Port | Description |
