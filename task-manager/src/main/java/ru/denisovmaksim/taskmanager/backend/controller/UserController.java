@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.denisovmaksim.taskmanager.backend.dto.ApiPath;
 import ru.denisovmaksim.taskmanager.backend.dto.UserRequest;
 import ru.denisovmaksim.taskmanager.backend.dto.UserResponse;
 
@@ -27,7 +28,7 @@ public class UserController {
             @ApiResponse(responseCode = "409", description = "This email is already taken"),
             @ApiResponse(responseCode = "400", description = "Incorrect data")
     })
-    @PostMapping
+    @PostMapping(ApiPath.USERS)
     public ResponseEntity<UserResponse> registerUser(@RequestBody UserRequest user) {
         log.info("Register user {}", user);
         return ResponseEntity.ok(new UserResponse(1, "jonh@mail.com"));
@@ -38,7 +39,7 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "Login successful"),
             @ApiResponse(responseCode = "401", description = "Incorrect email or password")
     })
-    @PostMapping("/auth/login")
+    @PostMapping(ApiPath.AUTH)
     public ResponseEntity<UserResponse> loginUser(UserRequest user) {
         log.info("Login User {}", user);
         return ResponseEntity.ok(new UserResponse(1, "jonh@mail.com"));
@@ -49,7 +50,7 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "User info"),
             @ApiResponse(responseCode = "401", description = "Unauthorized")
     })
-    @GetMapping
+    @GetMapping(ApiPath.USERS)
     public ResponseEntity<UserResponse> getCurrentUser() {
         log.info("getCurrentUser");
         return ResponseEntity.ok(new UserResponse(1, "jonh@mail.com"));
