@@ -1,3 +1,7 @@
+app:
+  jwt:
+    secret:  ${JWT_SECRET}
+    access-token-expiration: 15m
 server:
   port: 8080
 spring:
@@ -8,5 +12,7 @@ spring:
     password: password
   jpa:
     open-in-view: false
+    hibernate:
+      ddl-auto: none
   liquibase:
     change-log: classpath:liquibase/changelog.yml

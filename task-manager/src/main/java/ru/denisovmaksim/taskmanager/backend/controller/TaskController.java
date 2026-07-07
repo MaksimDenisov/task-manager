@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import ru.denisovmaksim.taskmanager.backend.dto.ApiPath;
+import ru.denisovmaksim.taskmanager.backend.config.ApiPath;
 import ru.denisovmaksim.taskmanager.backend.dto.TaskRequest;
 import ru.denisovmaksim.taskmanager.backend.dto.TaskResponse;
 
