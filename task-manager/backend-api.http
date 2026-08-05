@@ -51,7 +51,7 @@ Content-Type: application/json
 {
   "name": "Buy groceries",
   "description": "Cucumber, lettuce, corn",
-  "isDone": true
+  "isDone": false
 }
 
 > {%
