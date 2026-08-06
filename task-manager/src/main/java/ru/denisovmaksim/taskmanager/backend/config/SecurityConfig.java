@@ -1,6 +1,5 @@
 package ru.denisovmaksim.taskmanager.backend.config;
 
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +13,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
@@ -27,6 +27,7 @@ import ru.denisovmaksim.taskmanager.backend.service.UserDetailsServiceImpl;
 public class SecurityConfig {
 
     private final JwtFilter jwtFilter;
+    private final AuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -61,16 +62,13 @@ public class SecurityConfig {
                 );
 
         http.exceptionHandling(ex -> ex
-                .authenticationEntryPoint((request,
-                                           response,
-                                           exception) ->
-                        response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
         );
 
         http.authorizeHttpRequests(request -> request
-                        .requestMatchers(HttpMethod.GET, ApiPath.SWAGGER_DOCS).permitAll()
-                        .requestMatchers(HttpMethod.GET, ApiPath.SWAGGER_HTML).permitAll()
-                        .requestMatchers(HttpMethod.GET, ApiPath.SWAGGER_UI).permitAll());
+                .requestMatchers(HttpMethod.GET, ApiPath.SWAGGER_DOCS).permitAll()
+                .requestMatchers(HttpMethod.GET, ApiPath.SWAGGER_HTML).permitAll()
+                .requestMatchers(HttpMethod.GET, ApiPath.SWAGGER_UI).permitAll());
 
         http.authorizeHttpRequests(request -> request
                 .requestMatchers(HttpMethod.POST, ApiPath.AUTH).permitAll()

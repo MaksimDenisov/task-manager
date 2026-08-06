@@ -16,3 +16,5 @@ spring:
       ddl-auto: none
   liquibase:
     change-log: classpath:liquibase/changelog.yml
+springdoc:
+  override-with-generic-response: false

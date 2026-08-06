@@ -50,12 +50,21 @@ public class Task {
         this.user = user;
     }
 
-    public void update(String name, String description, boolean isDone) {
+    public Task update(String name, String description) {
         this.name = name;
         this.description = description;
-        this.isDone = isDone;
-        if (isDone) {
-            completedAt = Instant.now();
-        }
+        return this;
+    }
+
+    public Task complete() {
+        isDone = true;
+        completedAt = Instant.now();
+        return this;
+    }
+
+    public Task reopen() {
+        isDone = false;
+        completedAt = null;
+        return this;
     }
 }

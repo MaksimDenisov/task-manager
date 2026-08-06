@@ -1,8 +1,8 @@
 package ru.denisovmaksim.taskmanager.backend.service;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.denisovmaksim.taskmanager.backend.dto.TaskRequest;
 import ru.denisovmaksim.taskmanager.backend.dto.TaskResponse;
 import ru.denisovmaksim.taskmanager.backend.exception.TaskNotFoundException;
@@ -10,8 +10,7 @@ import ru.denisovmaksim.taskmanager.backend.model.Task;
 import ru.denisovmaksim.taskmanager.backend.repository.TaskRepository;
 import ru.denisovmaksim.taskmanager.backend.repository.UserRepository;
 
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -22,28 +21,48 @@ public class TaskService {
     @Transactional
     public TaskResponse create(Long userId, TaskRequest request) {
         Task task = new Task(request.name(), request.description(), userRepository.getReferenceById(userId));
-        Task createdTask = taskRepository.save(task);
-        return new TaskResponse(createdTask.getId(), createdTask.getName(),
-                createdTask.getDescription(), createdTask.isDone());
+        return toResponse(taskRepository.save(task));
     }
 
-    public Set<TaskResponse> getAll(long userId) {
-        Set<Task> tasks = taskRepository.getAllByUserId(userId);
+    @Transactional(readOnly = true)
+    public List<TaskResponse> getAll(long userId) {
+        List<Task> tasks = taskRepository.getAllByUserIdOrderByName(userId);
         return tasks.stream()
-                .map(t -> new TaskResponse(t.getId(), t.getName(), t.getDescription(), t.isDone()))
-                .collect(Collectors.toSet());
+                .map(this::toResponse)
+                .toList();
     }
 
     @Transactional
     public TaskResponse update(Long userId, Long taskId, TaskRequest request) {
-        Task task = taskRepository.findByIdAndUserId(taskId, userId)
-                .orElseThrow(() -> new TaskNotFoundException(String.format("Task with id = %d not found", taskId)));
-        task.update(request.name(), request.description(), request.isDone());
-        return new TaskResponse(task.getId(), task.getName(), task.getDescription(), task.isDone());
+        Task task = getTaskByIdAndThrowIfNotExist(userId, taskId);
+        return toResponse(task.update(request.name(), request.description()));
     }
 
     @Transactional
-    public void delete(Long userId, long id) {
-        taskRepository.delete(userId, id);
+    public TaskResponse complete(Long userId, Long taskId) {
+        Task task = getTaskByIdAndThrowIfNotExist(userId, taskId);
+        return toResponse(task.complete());
+    }
+
+    @Transactional
+    public TaskResponse reopen(Long userId, Long taskId) {
+        Task task = getTaskByIdAndThrowIfNotExist(userId, taskId);
+        return toResponse(task.reopen());
+    }
+
+    @Transactional
+    public void delete(Long userId, Long taskId) {
+        Task task = getTaskByIdAndThrowIfNotExist(userId, taskId);
+        taskRepository.delete(task);
+    }
+
+    private Task getTaskByIdAndThrowIfNotExist(Long userId, Long taskId) {
+        return taskRepository.findByIdAndUserId(taskId, userId)
+                .orElseThrow(() ->
+                        new TaskNotFoundException(String.format("Task with id = %d not found", taskId)));
+    }
+
+    private TaskResponse toResponse(Task task) {
+        return new TaskResponse(task.getId(), task.getName(), task.getDescription(), task.isDone());
     }
 }

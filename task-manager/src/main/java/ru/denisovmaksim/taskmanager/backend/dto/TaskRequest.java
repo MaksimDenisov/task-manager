@@ -19,11 +19,5 @@ public record TaskRequest(
                 example = "Cucumber, lettuce, corn"
         )
         @Size(max = 2000, message = "Length of description must be max 2000 character")
-        String description,
-
-        @Schema(
-                description = "Status of task",
-                example = "true"
-        )
-        boolean isDone
+        String description
 ) { }
