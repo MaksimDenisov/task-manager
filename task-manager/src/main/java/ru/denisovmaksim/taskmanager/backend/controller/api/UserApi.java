@@ -9,9 +9,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.denisovmaksim.taskmanager.backend.config.ApiPath;
-import ru.denisovmaksim.taskmanager.backend.dto.ErrorResponse;
-import ru.denisovmaksim.taskmanager.backend.dto.UserRequest;
-import ru.denisovmaksim.taskmanager.backend.dto.UserResponse;
+import ru.denisovmaksim.taskmanager.backend.dto.api.ErrorResponse;
+import ru.denisovmaksim.taskmanager.backend.dto.api.UserRequest;
+import ru.denisovmaksim.taskmanager.backend.dto.api.UserResponse;
 import ru.denisovmaksim.taskmanager.backend.model.CustomUserDetails;
 
 @Tag(name = "Users", description = "Operation with user (sign up, sign in, get user info)")

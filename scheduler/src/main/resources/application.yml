@@ -1,6 +1,8 @@
 app:
   scheduler:
     report-cron: "*/10 * * * * *"
+  internal-token: internal-token
+  task-manager-url:  http://task-manager:8080
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver

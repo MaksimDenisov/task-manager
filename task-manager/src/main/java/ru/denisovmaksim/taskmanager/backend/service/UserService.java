@@ -7,7 +7,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.denisovmaksim.taskmanager.backend.dto.UserRequest;
+import ru.denisovmaksim.taskmanager.backend.dto.api.UserRequest;
 import ru.denisovmaksim.taskmanager.backend.exception.UserAlreadyExistException;
 import ru.denisovmaksim.taskmanager.backend.model.CustomUserDetails;
 import ru.denisovmaksim.taskmanager.backend.model.User;

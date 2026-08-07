@@ -1,4 +1,4 @@
-package ru.denisovmaksim.taskmanager.backend.controller;
+package ru.denisovmaksim.taskmanager.backend.controller.api;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import ru.denisovmaksim.taskmanager.backend.config.ApiPath;
-import ru.denisovmaksim.taskmanager.backend.controller.api.TaskApi;
-import ru.denisovmaksim.taskmanager.backend.dto.TaskRequest;
-import ru.denisovmaksim.taskmanager.backend.dto.TaskResponse;
+import ru.denisovmaksim.taskmanager.backend.dto.api.TaskRequest;
+import ru.denisovmaksim.taskmanager.backend.dto.api.TaskResponse;
 import ru.denisovmaksim.taskmanager.backend.model.CustomUserDetails;
 import ru.denisovmaksim.taskmanager.backend.service.TaskService;
 

@@ -2,11 +2,6 @@ package ru.denisovmaksim.taskmanager.backend.config;
 
 
 public final class ApiPath {
-
-    public static final String SWAGGER_UI =   "/swagger-ui/**";
-    public static final String SWAGGER_HTML =   "/swagger-ui.html";
-    public static final String SWAGGER_DOCS =   "/v3/api-docs/**";
-
     private ApiPath() {
         throw new UnsupportedOperationException("Utility class");
     }

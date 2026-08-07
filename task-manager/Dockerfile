@@ -16,6 +16,8 @@ RUN ./gradlew :task-manager:bootJar
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /usr/app
 
+RUN apk add --no-cache wget
+
 COPY --from=builder /usr/app/task-manager/build/libs/*.jar app.jar
 
 CMD ["java", "-jar", "app.jar"]

@@ -1,4 +1,4 @@
-package ru.denisovmaksim.taskmanager.backend.controller;
+package ru.denisovmaksim.taskmanager.backend.controller.api;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.denisovmaksim.taskmanager.backend.config.ApiPath;
-import ru.denisovmaksim.taskmanager.backend.controller.api.UserApi;
-import ru.denisovmaksim.taskmanager.backend.dto.UserRequest;
-import ru.denisovmaksim.taskmanager.backend.dto.UserResponse;
+import ru.denisovmaksim.taskmanager.backend.dto.api.UserRequest;
+import ru.denisovmaksim.taskmanager.backend.dto.api.UserResponse;
 import ru.denisovmaksim.taskmanager.backend.model.CustomUserDetails;
 import ru.denisovmaksim.taskmanager.backend.service.UserService;
 

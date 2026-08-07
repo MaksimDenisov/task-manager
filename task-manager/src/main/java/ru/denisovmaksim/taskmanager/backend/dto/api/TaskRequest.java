@@ -1,4 +1,4 @@
-package ru.denisovmaksim.taskmanager.backend.dto;
+package ru.denisovmaksim.taskmanager.backend.dto.api;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;

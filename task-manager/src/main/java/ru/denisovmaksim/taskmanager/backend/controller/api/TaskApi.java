@@ -9,9 +9,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
-import ru.denisovmaksim.taskmanager.backend.dto.ErrorResponse;
-import ru.denisovmaksim.taskmanager.backend.dto.TaskRequest;
-import ru.denisovmaksim.taskmanager.backend.dto.TaskResponse;
+import ru.denisovmaksim.taskmanager.backend.dto.api.ErrorResponse;
+import ru.denisovmaksim.taskmanager.backend.dto.api.TaskRequest;
+import ru.denisovmaksim.taskmanager.backend.dto.api.TaskResponse;
 import ru.denisovmaksim.taskmanager.backend.model.CustomUserDetails;
 
 import java.util.List;
