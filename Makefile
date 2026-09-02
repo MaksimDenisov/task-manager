@@ -9,8 +9,11 @@ run-task-manager:
 	docker compose -f compose.yml -f compose.dev.yml up task-manager --build
 run-scheduler:
 	docker compose -f compose.yml -f compose.dev.yml up scheduler --build
+run-summarization:
+	docker compose -f compose.yml -f compose.dev.yml up summarization --build
 run-mail-sender:
-	dockerdocker compose -f compose.yml -f compose.dev.yml up mail-sender
+	docker compose -f compose.yml -f compose.dev.yml up mail-sender
+
 
 run-dev:
 	docker compose -f compose.yml -f compose.dev.yml up

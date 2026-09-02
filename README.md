@@ -22,14 +22,15 @@ make run-mail-sender
 
 ## URLs
 
-| Service | URL |
-|---------|-----|
-| Frontend | http://localhost:8080 |
-| Task Manager API | http://localhost:8081 |
-| Scheduler API | http://localhost:8082 |
-| Mail Sender API | http://localhost:8083 |
-| Kafka UI | http://localhost:8084 |
-|Swagger |http://localhost:8081/swagger-ui/index.html|
+| Service          | URL                                         |
+|------------------|---------------------------------------------|
+| Frontend         | http://localhost:8080                       |
+| Task Manager API | http://localhost:8081                       |
+| Scheduler API    | http://localhost:8082                       |
+| Mail Sender API  | http://localhost:8083                       |
+| Summarization    | http://localhost:8084                       |
+| Kafka UI         | http://localhost:8085                       |
+| Swagger          | http://localhost:8081/swagger-ui/index.html |
 
 
 ## Development Ports

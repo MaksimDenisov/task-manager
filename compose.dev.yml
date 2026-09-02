@@ -2,7 +2,7 @@ services:
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
     ports:
-      - "8084:8080"
+      - "8085:8080"
 
   task-manager:
     environment:
@@ -20,7 +20,9 @@ services:
   mail-sender:
     ports:
       - "8083:8080"
-
+  summarization:
+    ports:
+      - "8084:8080"
   web:
     ports:
       - "8080:80"
